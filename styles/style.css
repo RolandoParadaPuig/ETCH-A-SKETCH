@@ -5,7 +5,7 @@ body {
   padding: 0;
   height: 100vh;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: #ccc;
 }
 
@@ -32,8 +32,46 @@ body {
 #inputDimention {
   margin: 1em;
 }
+#buttons {
+  display: flex;
+  margin: 0.15em;
+}
 #btnAdd {
+  margin: 0.15em;
 }
 #btnNew {
   display: none;
+  margin: 0.15em;
 }
+#resetColor {
+  display: none;
+  margin: 0.15em;
+}
+
+/* atempt to use a color palet from codepen.io */
+.spectrum-wrapper {
+  cursor: crosshair;
+  width: 360px;
+  position: relative;
+  height: 20px;
+  user-select: none;
+  user-drag: none;
+}
+.spectrum-layer {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    rgb(255 0 0),
+    rgb(255 255 0),
+    rgb(0 255 0),
+    rgb(0 255 255),
+    rgb(0 0 255),
+    rgb(255 0 255),
+    rgb(255 0 0)
+  );
+}
+#hide {
+  display: none;
+}
+/* codepen.io palet end */
