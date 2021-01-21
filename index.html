@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ETCH-A-SKETCH</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  </head>
+  <body>
+    <form id="inputDimention" action="">
+      <label for="width">Select the with in px</label>
+      <input
+        type="number"
+        min="100"
+        max="800"
+        step="1"
+        name="width"
+        value=""
+        id="width"
+      />
+      <label for="height">Select the height in px</label>
+      <input
+        type="number"
+        min="100"
+        max="800"
+        step="1"
+        name="height"
+        value=""
+        id="height"
+      />
+    </form>
+    <div id="buttons">
+      <button id="btnAdd">GO</button>
+      <button id="btnNew">NEW</button>
+    </div>
+  </body>
+  <script src="scripts/script.js"></script>
+</html>
