@@ -1,14 +1,51 @@
 let container = document.querySelector("#container");
 let buttonAdd = document.querySelector("#btnAdd");
 let buttonNew = document.querySelector("#btnNew");
-let form = document.querySelector("#inputDimention");
+let form = document.querySelector("#userInput");
 let resetColor = document.querySelector("#resetColor");
-let containerH;
-let containerW;
+let containerW = 800;
 let child;
+let childW;
 let childStyle;
-let userW;
-let userH;
+let userSelection;
+let numberOfChilds;
+
+buttonAdd.onclick = function () {
+  container = document.createElement("div");
+  container.id = "container";
+  document.body.appendChild(container);
+  userSelection = document.getElementById("sPerSide").value;
+  childW = containerW / userSelection;
+  numberOfChilds = userSelection * userSelection;
+
+  for (i = 0; i < numberOfChilds; i++) {
+    child = document.createElement("div");
+    child.className = "child";
+    container.appendChild(child);
+    child.style["height"] = childW + "px";
+    child.style["width"] = childW + "px";
+    childStyle = document.getElementsByClassName("child");
+    childStyle[i].onmouseover = function () {
+      this.style.backgroundColor = color;
+    };
+  }
+
+  buttonAdd.style.display = "none";
+  buttonNew.style.display = "block";
+  resetColor.style.display = "block";
+  form.style.display = "none";
+};
+buttonNew.onclick = function () {
+  document.body.removeChild(container);
+  buttonAdd.style.display = "block";
+  buttonNew.style.display = "none";
+  form.style.display = "block";
+};
+resetColor.onclick = function () {
+  for (let i = 0; i < numberOfChilds; i++) {
+    childStyle[i].style.backgroundColor = "black";
+  }
+};
 
 /* atempt to use a color palet from codepen.io */
 const getSpectrumWrapper = () => document.querySelector(".spectrum-wrapper");
@@ -68,43 +105,3 @@ getSpectrumWrapper().addEventListener("click", (e) => {
   return hexValue;
 });
 /* codepen.io palet end */
-
-buttonAdd.onclick = function () {
-  container = document.createElement("div");
-  container.id = "container";
-  document.body.appendChild(container);
-  userW = document.querySelector("#width").value;
-  userH = document.querySelector("#height").value;
-  container.style.height = userH + "px";
-  container.style.width = userW + "px";
-  let childH = userH / 16;
-  let childW = userW / 16;
-
-  for (i = 0; i < 256; i++) {
-    child = document.createElement("div");
-    child.className = "child";
-    container.appendChild(child);
-    child.style["height"] = childH + "px";
-    child.style["width"] = childW + "px";
-    childStyle = document.getElementsByClassName("child");
-    childStyle[i].onclick = function () {
-      this.style.backgroundColor = color;
-    };
-  }
-
-  buttonAdd.style.display = "none";
-  buttonNew.style.display = "block";
-  resetColor.style.display = "block";
-  form.style.display = "none";
-};
-buttonNew.onclick = function () {
-  document.body.removeChild(container);
-  buttonAdd.style.display = "block";
-  buttonNew.style.display = "none";
-  form.style.display = "block";
-};
-resetColor.onclick = function () {
-  for (let i = 0; i < 256; i++) {
-    childStyle[i].style.backgroundColor = "black";
-  }
-};
